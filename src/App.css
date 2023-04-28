@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
+.app-wrapper {
+    padding: 15px;
+    min-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-title {
+    font-family: NHL;
+    font-size: 3rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.welcome-text {
+    text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.tables-section {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
 }
 
-.App-link {
-  color: #61dafb;
+.page-table-wrapper {
+    width: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.prediction-wrapper {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.prediction-img {
+    border: solid 4px black;
+    border-radius: 10px;
+    width: 90px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.prediction-explanation {
+    width: 50%;
+}
+
+.disclaimer-text {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 90px;
+}
+
+@media screen and (max-width: 1250px) {
+    .tables-section {
+        flex-flow: column;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .prediction-wrapper {
+        flex-flow: column;
+        text-align: center;
+        align-items: center;
+    }
 }

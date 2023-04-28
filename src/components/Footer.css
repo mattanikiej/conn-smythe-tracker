@@ -1,0 +1,16 @@
+.footer-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #269cdb;
+    color: white;
+    width: 100%;
+    bottom: 0;
+    height: 15rem;
+}
+
+.image-container {
+    width: 5rem;
+}

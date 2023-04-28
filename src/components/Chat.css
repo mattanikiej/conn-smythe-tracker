@@ -1,0 +1,31 @@
+.chat-wrapper {
+    z-index: 999;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+}
+
+.chat-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.chat-card {
+    margin-bottom: 50px;
+    width: 25rem;
+    max-height: 30rem;
+    overflow-y: scroll;
+    border: 3px black solid;
+    border-radius: 10px;
+}
+
+.chat-input {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    border-top: 2px solid black;
+}

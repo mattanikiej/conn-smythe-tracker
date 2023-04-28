@@ -1,0 +1,17 @@
+.table-wrapper {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-title {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.table-background {
+    width: 100%;
+    background-color: white;
+}
