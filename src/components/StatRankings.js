@@ -15,6 +15,7 @@ function StatRankings(props) {
     // get data from api on first render
     useEffect(() => {
         const getStatLeaders = () => {
+            const headers = { mode: "no-cors"}
             const host = "https://api.nhle.com";
             const path =
                 "/stats/rest/en/leaders/skaters/" +
@@ -24,7 +25,7 @@ function StatRankings(props) {
             fetch(
                 `https://api.allorigins.win/get?url=${encodeURIComponent(
                     host + path
-                )}`
+                )}`, headers
             )
                 .then((response) => {
                     if (response.ok) return response.json();
@@ -37,7 +38,8 @@ function StatRankings(props) {
                 });
         };
         getStatLeaders();
-    }, [stat]);
+    // eslint-disable-next-line
+    }, []);
 
     // update table data when the api is pulled
     // cant be dynamic since the key is different for each stat
@@ -88,25 +90,27 @@ function StatRankings(props) {
     return (
         <div className="table-wrapper">
             <h2 className="table-title">{stat.toUpperCase()}</h2>
-            <Table
-                striped
-                bordered
-                hover
-                variant="dark"
-                className="table-background"
-            >
-                <thead>
-                    <tr>
-                        <th>NAME</th>
-                        <th>POSITION</th>
-                        <th>TEAM</th>
-                        <th>{stat.toUpperCase()}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {loading ? <Spinner animation="border" role="status" variant="info"/> : tableData}
-                </tbody>
-            </Table>
+            {loading ? (
+                <Spinner animation="border" role="status" variant="info" />
+            ) : (
+                <Table
+                    striped
+                    bordered
+                    hover
+                    variant="dark"
+                    className="table-background"
+                >
+                    <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>POSITION</th>
+                            <th>TEAM</th>
+                            <th>{stat.toUpperCase()}</th>
+                        </tr>
+                    </thead>
+                    <tbody>{tableData}</tbody>
+                </Table>
+            )}
         </div>
     );
 }
