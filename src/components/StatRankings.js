@@ -10,6 +10,7 @@ function StatRankings(props) {
     const stat = props.stat.toLowerCase();
     const [statData, setStatData] = useState([]);
     const [tableData, setTableData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     // get data from api on first render
     useEffect(() => {
@@ -31,6 +32,7 @@ function StatRankings(props) {
                 })
                 .then((data) => {
                     const newStatData = JSON.parse(data.contents);
+                    console.log(data);
                     setStatData(newStatData.data);
                 });
         };
@@ -41,6 +43,7 @@ function StatRankings(props) {
     // cant be dynamic since the key is different for each stat
     useEffect(() => {
         if (stat === "goals") {
+            setLoading(false);
             setTableData(
                 statData.map((player) => (
                     <tr key={player.player.id}>
@@ -54,6 +57,7 @@ function StatRankings(props) {
         }
 
         if (stat === "assists") {
+            setLoading(false);
             setTableData(
                 statData.map((player) => (
                     <tr key={player.player.id}>
@@ -67,6 +71,7 @@ function StatRankings(props) {
         }
 
         if (stat === "points") {
+            setLoading(false);
             setTableData(
                 statData.map((player) => (
                     <tr key={player.player.id}>
@@ -99,13 +104,7 @@ function StatRankings(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {tableData ? (
-                        tableData
-                    ) : (
-                        <Spinner animation="border" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </Spinner>
-                    )}
+                    {loading ? <Spinner animation="border" role="status" variant="info"/> : tableData}
                 </tbody>
             </Table>
         </div>
