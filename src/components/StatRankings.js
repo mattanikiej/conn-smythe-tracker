@@ -15,17 +15,12 @@ function StatRankings(props) {
     // get data from api on first render
     useEffect(() => {
         const getStatLeaders = () => {
-            const headers = { mode: "no-cors"}
-            const host = "https://api.nhle.com";
-            const path =
-                "/stats/rest/en/leaders/skaters/" +
-                stat +
-                "?cayenneExp=season=20222023%20and%20gameType=3";
-
             fetch(
-                `https://api.allorigins.win/get?url=${encodeURIComponent(
-                    host + path
-                )}`, headers
+                `https://api.allorigins.win/get?url=${encodeURI(
+                    "https://api.nhle.com/stats/rest/en/leaders/skaters/" +
+                        stat +
+                        "?cayenneExp=season=20222023&gameType=3"
+                )}`
             )
                 .then((response) => {
                     if (response.ok) return response.json();
@@ -38,7 +33,7 @@ function StatRankings(props) {
                 });
         };
         getStatLeaders();
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, []);
 
     // update table data when the api is pulled
